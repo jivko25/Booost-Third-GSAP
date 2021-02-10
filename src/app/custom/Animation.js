@@ -9,12 +9,12 @@ export default class Animation{
         this._rocketElement = document.querySelector('.rocket');
         this._backgroundElement = document.querySelector('.background');
         this._svgPath = config.svgPath;
-        this._rocketPath = null;
+        this._rocketTween = null;
         this.stop = false;
     }
     play(){
 
-    this._rocketPath = gsap.to(this._rocketElement, {
+    this._rocketTween = gsap.to(this._rocketElement, {
         motionPath: {
             path: this._svgPath, 
             autoRotate : true
@@ -40,12 +40,12 @@ export default class Animation{
         this._backgroundElement.addEventListener('click', () => {
             if (this.stop == false) 
             {
-                this._rocketPath.pause();
+                this._rocketTween.pause();
                 this.stop = true;
             }
             else 
             {
-                this._rocketPath.restart();
+                this._rocketTween.restart();
                 this.stop = false;
             }
           });
